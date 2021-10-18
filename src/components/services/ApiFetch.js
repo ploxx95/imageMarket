@@ -1,13 +1,23 @@
-import { LIMIT, URL_API } from "../../constants";
+import {
+  URL_API,
+  PAGE,
+  PER_PAGE,
+  ORDER_BY,
+  COLOR,
+  ORIENTATION,
+  CLIENT_ID,
+} from "../../constants";
 
 export default async function ApiFetch(
-  endpoint,
+  endpoint = "naturaleza",
   method = "GET",
   headers,
   body
 ) {
   const response = await fetch(
-    `${URL_API}&q=${endpoint}&limit=${LIMIT}&offset=${0},&rating=${"g"}&lang=en`,
+    //  https://api.unsplash.com/search/photos?&query=gaming&page=1&per_page=10&order_by=relevant&color=purple&client_id=nOng1IqX6cw1GZS-WeLzn6BexT_W2y1V0ckNYCrDuoM
+    // `https://api.unsplash.com/search/photos?&query=gaming&page=1&per_page=10&order_by=relevant&color=purple&client_id=nOng1IqX6cw1GZS-WeLzn6BexT_W2y1V0ckNYCrDuoM`,
+    `${URL_API}?&query=${endpoint}&page=${PAGE}&per_page=${PER_PAGE}&order_by=${ORDER_BY}&color=${COLOR}&client_id=${CLIENT_ID}`,
     { method, headers, body: JSON.stringify(body) }
   );
   if (!response.ok) {

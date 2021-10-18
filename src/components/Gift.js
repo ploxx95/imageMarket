@@ -1,9 +1,9 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 function Gift({ title, url }) {
   return (
     <div>
+      <h1>{title}</h1>
       <img alt={title} src={url} />
     </div>
   );

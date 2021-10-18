@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-// import ApiFetch from "./components/services/ApiFetch";
 import Gift from "./components/Gift";
 import Gift_Fetcher from "./components/services/Gift_Fetcher";
+import { Route } from "wouter";
 
 function App() {
   const [gift, setGift] = useState([]);
@@ -14,7 +14,7 @@ function App() {
   const handleInput = (e) => {
     setInput(e.target.value);
   };
-
+  console.log(gift);
   return (
     <div className="container mx-auto px-4  h-36   bg-gray-100">
       <div className=" flex justify-center">
@@ -27,8 +27,8 @@ function App() {
         </form>
       </div>
       <div className="flex flex-wrap ">
-        {gift.map(({ url, title, id }) => (
-          <Gift key={id} url={url} title={title} />
+        {gift.map(({ urls, description, id }) => (
+          <Gift key={id} url={urls.thumb} title={description} />
         ))}
       </div>
     </div>

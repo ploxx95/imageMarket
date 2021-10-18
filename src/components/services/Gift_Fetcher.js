@@ -1,15 +1,14 @@
 import ApiFetch from "./ApiFetch";
 
 export default async function Gift_Fetcher(topic) {
-  const finish = await ApiFetch(topic).then((datos) => {
-    const { data } = datos;
-    const gift_data = data.map((api_data) => {
-      const { id, images, title } = api_data;
-      const { url } = images.downsized_medium;
-      return { id, title, url };
+  const data_parse = await ApiFetch(topic).then((datos) => {
+    // console.log(datos);
+    const { results } = datos;
+    const images_data = results.map((api_data) => {
+      const { id, urls, description } = api_data;
+      return { id, urls, description };
     });
-
-    return gift_data;
+    return images_data;
   });
-  return finish;
+  return data_parse;
 }
