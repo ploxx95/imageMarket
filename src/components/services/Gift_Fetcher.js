@@ -5,8 +5,8 @@ export default async function Gift_Fetcher(topic) {
     // console.log(datos);
     const { results } = datos;
     const images_data = results.map((api_data) => {
-      const { id, urls, description } = api_data;
-      return { id, urls, description };
+      const { id, urls, description, user, links } = api_data;
+      return { id, urls, description, user, links };
     });
     return images_data;
   });

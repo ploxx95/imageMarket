@@ -17,9 +17,10 @@ export default async function ApiFetch(
   const response = await fetch(
     //  https://api.unsplash.com/search/photos?&query=gaming&page=1&per_page=10&order_by=relevant&color=purple&client_id=nOng1IqX6cw1GZS-WeLzn6BexT_W2y1V0ckNYCrDuoM
     // `https://api.unsplash.com/search/photos?&query=gaming&page=1&per_page=10&order_by=relevant&color=purple&client_id=nOng1IqX6cw1GZS-WeLzn6BexT_W2y1V0ckNYCrDuoM`,
-    `${URL_API}?&query=${endpoint}&page=${PAGE}&per_page=${PER_PAGE}&order_by=${ORDER_BY}&color=${COLOR}&client_id=${CLIENT_ID}`,
+    `${URL_API}?&query=${endpoint}&page=${PAGE}&per_page=${PER_PAGE}&order_by=${ORDER_BY}&client_id=${CLIENT_ID}`,
     { method, headers, body: JSON.stringify(body) }
   );
+  console.log("API FETCH SE IMPRIME");
   if (!response.ok) {
     const error = await response.json();
     throw new Error(error.errors.message);
