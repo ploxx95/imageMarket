@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import Masonry from "react-masonry-css";
 import ImageCard from "./ImageCard";
 import Gift_Fetcher from "./services/Gift_Fetcher";
+import { useParams } from "react-router";
 
 export default function ListImage({ props }) {
   const [gift, setGift] = useState([]);
-  // const { keyword } = params;
-  let keyword = "gaming";
+  const { keyword } = useParams();
   useEffect(() => {
     Gift_Fetcher(keyword).then((gift_data) => setGift(gift_data));
   }, [keyword]);

@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Header } from "../../components/Header";
-
+import { Link, useRouteMatch } from "react-router-dom";
+import { Header } from "../components/Header";
+import { Search } from "../components/Search";
 export default function Home() {
   const [input, setInput] = useState("");
+  const match = useRouteMatch();
 
   console.log(
     "test if can i use ??  ",
@@ -22,13 +24,12 @@ export default function Home() {
     <div className="container mx-auto px-4   ">
       <Header />
       <div className=" flex justify-center">
-        <form onSubmit={handleSubmit}>
-          <input
-            className="shadow-md mt-6 px-2 py-3 "
-            value={input}
-            onChange={handleInput}
-          ></input>
-        </form>
+        <Search
+          input={input}
+          handleInput={handleInput}
+          handleSubmit={handleSubmit}
+        />
+        <Link to={`${match.url}/gift/hola`}>Submit</Link>
       </div>
     </div>
   );
